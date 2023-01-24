@@ -1,0 +1,18 @@
+---
+title: "Untitled"
+author: "S_Chik"
+date: "2023-01-04"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Cette application shiny a été élaborée à partir du package golem. Elle se veut contruite tout comme un package, avec plusieurs dossiers comme les vignettes contenant les fonctions dédiées à l'application, le dossier dev contenant tous les fichiers dédiés à sa structure. Pour un lancement correct de l'application, veuillez d'abbord lancer le script du fichier R BB_dataset.R qui se trouve dans le dossier /APIname/data-raw. Enssuite lancer l'api par la commande golem::run_dev(). Elle contient divers éléments sur la série Breaking Bad. Le fond d'écran est une image dédié à l'un des personnages principaux qui laisse place à 2 text_input qui demande votre nom et vous renvoie la salutation. L'application contient aussi des graphiques relatifs aux morts et meurtriers de la série.
+
+
+![This is the caption!](/NewOrdi/API_Recueil/Golem_Ok.png)
+
+
+

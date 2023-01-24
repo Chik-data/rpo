@@ -1,0 +1,79 @@
+---
+title: "flat_fonctions-metiers-propre-a-mon-api_2.Rmd empty"
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r development, include=FALSE}
+library(testthat)
+```
+
+```{r development-load}
+# Load already included functions if relevant
+pkgload::load_all(export_all = FALSE)
+```
+
+# fonctions_metiers_propre_a_mon_api  
+# Description de ce que prend en entrée et renvoie, la fonction actuelle.
+
+# Dire Bjr à 1 personne
+
+
+```{r function-say_hello}
+library(glue)
+#' fonctions_metiers_propre_a_mon_api Title
+#' comme ma fonction dépend de la fonction glue du pkg glue: il faut le signaler en:
+#' ayant cliquer à l'interieur de la fonction glue() que je viens d'écrire ds ma fonction puis en allant dans
+#' Code -> insert Roxygène Skeleton
+#' en ajoutant "@importFrom" pkg_name function_name
+#' 
+#' Title: say hello
+#' @param personne Type character. La personne à qui l'on souhaite dire bjr
+#' @importFrom glue glue
+#' @return character de type "Hey coucou {personne}"
+#' @export
+#'
+#' @examples
+#' say_hello(Benjamin)
+say_hello=function(personne){
+ glue("Hey coucou {personne}") 
+}
+```
+
+
+
+```{r examples-fonctions_say_hello}
+say_hello(personne="Sarah")
+say_hello(personne="Tchu")
+```
+
+```{r tests-fonctions_say_hello}
+library(testthat)
+test_that("say_hello works", {
+  expect_equal(object = say_hello(personne="Sarah"),
+               expected = "Hey coucou Sarah")
+})
+
+```
+
+```{r function-pipe}
+#' @importFrom (magrittr, %>%)
+#' 
+death_sculpte=function(df=death){
+  season.d=death %>% group_by(season) %>% summarise( nb_deaths_per_season=sum(number_of_deaths)) %>% arrange(nb_deaths_per_season)
+  episodes.meurtrier.by.season=death %>% group_by(season, episode) %>% summarise(nb_deaths_per_epi_season = sum(number_of_deaths)) %>% arrange(desc(nb_deaths_per_epi_season))
+  Fivest_murder=death %>% group_by(responsible) %>% summarise(nb_deaths_per_responsible=sum(number_of_deaths)) %>% arrange(desc(nb_deaths_per_responsible))
+  return(list(tib1=season.d, tib2=episodes.meurtrier.by.season, tib3=Fivest_murder))
+}
+```
+
+
+```{r development-inflate, eval=FALSE}
+# Run but keep eval=FALSE to avoid infinite loop
+# Execute in the console directly
+fusen::inflate(flat_file ="dev/flat_fonctions-metiers-propre-a-mon-api_2.Rmd", 
+               vignette_name = "Fonctions metiers de mon api",
+               check = FALSE)
+```
+
